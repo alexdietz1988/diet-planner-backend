@@ -17,5 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/auth', controllers.auth)
+app.use('/userinfo', controllers.userinfo)
+app.use('/meal', controllers.meal)
 
 app.listen(PORT, () => console.log('listening on PORT ' + PORT))
