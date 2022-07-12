@@ -2,7 +2,9 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const morgan = require('morgan')
+require('dotenv').config()
 const PORT = process.env.PORT || 4000
+require('./config/db.connection.js')
 
 app.use(cors())
 app.use(express.urlencoded({ extended: false }))
