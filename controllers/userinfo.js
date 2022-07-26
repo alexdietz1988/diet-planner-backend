@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     try {
-        let userInfo = await db.UserInfo.find({username: req.query.username})
+        let userInfo = await db.UserInfo.findOne({username: req.query.username})
         res.json(userInfo)
     } catch (error) {
         res.status(400).json(error)
