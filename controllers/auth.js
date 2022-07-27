@@ -13,7 +13,7 @@ router.post('/signup', async (req, res) => {
         req.body.password = hash
 
         await db.User.create(req.body)
-        await db.UserInfo.create({username: req.body.username, weight: '', goal: '', TDEE: ''})
+        await db.UserInfo.create({username: req.body.username})
         return res.json('user created')
     } catch (error) {
         console.log(error)
