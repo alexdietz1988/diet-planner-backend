@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
     try {
-        console.log(req.query.id)
         await db.Meal.findByIdAndUpdate(req.query.id, req.body)
         res.json('successfully updated meal')
     } catch (error) {
