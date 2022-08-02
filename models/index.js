@@ -1,5 +1,5 @@
 module.exports = {
     User: require('./User.js'),
-    UserInfo: require('./UserInfo.js'),
+    Basics: require('./Basics.js'),
     Meal: require('./Meal.js')
 }

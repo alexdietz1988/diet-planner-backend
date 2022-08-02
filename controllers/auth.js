@@ -13,21 +13,12 @@ router.post('/signup', async (req, res) => {
         req.body.password = hash
 
         await db.User.create(req.body)
-        await db.UserInfo.create({username: req.body.username})
+        await db.Basics.create({username: req.body.username})
         return res.json('user created')
     } catch (error) {
         console.log(error)
         req.error = error
         return res.json(error)
-    }
-})
-
-router.post('/', async (req, res) => {
-    try {
-        await db.UserInfo.create(req.body)
-        res.json('successfully created user info')
-    } catch (error) {
-        res.status(400).json(error)
     }
 })
 
