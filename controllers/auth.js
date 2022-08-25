@@ -15,7 +15,7 @@ router.post('/signup', async (req, res) => {
 
         await db.User.create(req.body)
         await db.Basics.create({username: user})
-        return res.json(user)
+        return res.json('success')
     } catch (error) {
         console.log(error)
         req.error = error
