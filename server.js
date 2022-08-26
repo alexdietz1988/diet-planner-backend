@@ -13,7 +13,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('Hello, you have reached the Diet Planner backend')
+    res.send('Hello there, you have reached the Diet Planner backend')
 })
 
 app.use('/auth', controllers.auth)
