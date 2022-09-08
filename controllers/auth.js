@@ -29,11 +29,11 @@ router.post('/login', async (req, res) => {
         const foundUser = await db.User.findOne({ username: user })
         const match = await bcrypt.compare(req.body.password, foundUser.password)
         if(!match) return res.json('invalid username or password')
-        return res.json(user)
+        return res.json('success')
     } catch (error) {
         console.log(error)
         req.error = error
-        return res.send(error)
+        return res.json(error)
     }
 })
 
