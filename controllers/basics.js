@@ -5,9 +5,9 @@ const router = express.Router()
 router.get('/', async (req, res) => {
     try {
         let basics = await db.Basics.findOne({ user: req.query.user })
-        res.json(basics)
+        res.json({ success: true, basics })
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json({ success: false, error })
     }
 })
 
@@ -16,7 +16,7 @@ router.put('/', async (req, res) => {
         await db.Basics.findOneAndUpdate(req.params.user, req.body)
         res.json('success')
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json({ success: false, error })
     }
 })
 

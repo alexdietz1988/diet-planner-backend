@@ -5,7 +5,7 @@ const router = express.Router()
 router.post('/', async (req, res) => {
     try {
         await db.Meal.create(req.body)
-        res.json('success')
+        res.json({ success: true })
     } catch (error) {
         res.status(400).json(error)
     }
@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         let meals = await db.Meal.find({user: req.query.user})
-        res.json(meals)
+        res.json({ success: true, meals })
     } catch (error) {
         res.status(400).json(error)
     }
@@ -23,18 +23,18 @@ router.get('/', async (req, res) => {
 router.put('/', async (req, res) => {
     try {
         await db.Meal.findByIdAndUpdate(req.query.id, req.body)
-        res.json('success')
+        res.json({ success: true })
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json({ success: false, error})
     }
 })
 
 router.delete('/', async (req, res) => {
     try {
         await db.Meal.findByIdAndDelete(req.query.id)
-        res.json('success')
+        res.json({ success: true })
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json({ success: false, error})
     }
 })
 
