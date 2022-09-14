@@ -6,7 +6,7 @@ const db = require('../models')
 router.post('/signup', async (req, res) => {
     try {
         let user = req.body.username
-        const foundUser = await db.User.exists({username: user})
+        const foundUser = await db.User.exists({ user })
         if (foundUser) return res.json('user already exists')
 
         const salt = await bcrypt.genSalt(12)
@@ -14,7 +14,7 @@ router.post('/signup', async (req, res) => {
         req.body.password = hash
 
         await db.User.create(req.body)
-        await db.Basics.create({username: user})
+        await db.Basics.create({ user })
         return res.json('success')
     } catch (error) {
         console.log(error)
@@ -26,7 +26,7 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         let user = req.body.username
-        const foundUser = await db.User.findOne({ username: user })
+        const foundUser = await db.User.findOne({ user })
         const match = await bcrypt.compare(req.body.password, foundUser.password)
         if(!match) return res.json('invalid username or password')
         return res.json('success')

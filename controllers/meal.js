@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        let meals = await db.Meal.find({username: req.query.username})
+        let meals = await db.Meal.find({user: req.query.user})
         res.json(meals)
     } catch (error) {
         res.status(400).json(error)
