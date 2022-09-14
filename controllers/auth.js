@@ -32,7 +32,6 @@ router.post('/login', async (req, res) => {
         return res.json({ success: true})
     } catch (error) {
         console.log(error)
-        req.error = error
         return res.json({ success: false, error})
     }
 })

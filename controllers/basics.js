@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 router.put('/', async (req, res) => {
     try {
         await db.Basics.findOneAndUpdate(req.params.user, req.body)
-        res.json('success')
+        res.json({ success: true })
     } catch (error) {
         res.status(400).json({ success: false, error })
     }
