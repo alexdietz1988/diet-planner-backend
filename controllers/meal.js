@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 router.get('/fetch-meal', async (req, res) => {
     try {
         let meal = await db.Meal.findById(req.query.id)
-        if (!meal) return res.json({ success: false, message: 'Meal not found'})
+        if (!meal) return res.json({ success: false })
         return res.json({ success: true, meal})
     } catch (error) {
         return res.status(400).json(error)
